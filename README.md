@@ -1,4 +1,4 @@
 flashthrift-web
 ===============
 
-Website for Flashthrift
+Website for Flashthrift.  New prototype website using Rails.
