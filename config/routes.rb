@@ -8,6 +8,8 @@ FlashthriftWeb::Application.routes.draw do
   resources :items
 
 
+  match 'admin' => 'admin#show'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
