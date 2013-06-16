@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  #attr_accessible :email, :password_hash, :password_salt
+  
   attr_accessor :password
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :username, :email, :password, :password_confirmation
 
   before_save :encrypt_password
   
@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
+  
+  validates :username, :presence => true
+           #            :uniqueness => true
 
   def encrypt_password
     if password.present?
