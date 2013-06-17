@@ -7,11 +7,17 @@ class User < ActiveRecord::Base
   
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
   
-  validates :username, :presence => true
-           #            :uniqueness => true
+ # validates_presence_of :email
+ # validates_uniqueness_of :email
+  
+  validates :email, :presence => true,
+                    :uniqueness => true
+
+  validates :username, :presence => true,
+                       :uniqueness => true
+
+  has_many :items
 
   def encrypt_password
     if password.present?
