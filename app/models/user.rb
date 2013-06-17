@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   validates :username, :presence => true,
                        :uniqueness => true
 
+  # Items this user has listed
   has_many :items
 
   def encrypt_password

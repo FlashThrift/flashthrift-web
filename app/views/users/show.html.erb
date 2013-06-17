@@ -1,0 +1,41 @@
+<h1>User Details</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <a href="mailto:<%= @user.email %>"><%= @user.email %></a>
+</p>
+
+<p>
+  <b>Resest Password?</b>
+  <a href="#">Let's do this.</a>
+  </p>
+
+<p>
+  <b>Items listed for sale</b>
+</p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @user.items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.description %></td>
+      <td><%= link_to 'View', item %></td>
+      <td><%= link_to 'Edit', edit_item_path(item) %></td>
+      <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
