@@ -4,5 +4,5 @@
   who can also view transactions) and the admin group, who pretty much run this town.
 =end
 class Role < ActiveRecord::Base
-  attr_readonly :name, :role_description
+  attr_readonly :name
 end

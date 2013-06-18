@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   # Items this user has listed
   has_many :items
 
+  # Users can have a role
+  has_many :roles
+
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt

@@ -1,6 +1,6 @@
 FlashthriftWeb::Application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up"
-  root :to => "users#new"
+  root :to => "admin#index"
 
   resources :users
 
