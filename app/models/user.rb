@@ -18,14 +18,31 @@ class User < ActiveRecord::Base
   # Items this user has listed
   has_many :items
 
-  # Users can have a role
-  has_many :roles
+  # Users can have multiple roles
+  has_and_belongs_to_many :roles
 
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
+  end
+
+  # Checks if a user belongs to a role
+  def check_role(role_name)
+    all_roles = Role.all
+    r = nil
+    all_roles.each do |role|
+      if role.role_name == role_name
+        r = role
+      end
+    end
+
+    unless r.nil?
+      return self.roles.include?(r)
+    end
+    
+    return false
   end
 
 end
