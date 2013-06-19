@@ -21,6 +21,17 @@ class User < ActiveRecord::Base
   # Users can have multiple roles
   has_and_belongs_to_many :roles
 
+  # Authenticate a user against a password.  Returns the user object if the user is authenticated
+  def self.authenticate(username, password)
+    user = find_by_username(username)
+    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+      return user
+    else
+      return nil
+    end
+  end
+
+  # Encrypts the password.  This is done before saving the user to the database
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
@@ -29,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   # Checks if a user belongs to a role
-  def check_role(role_name)
+  def self.check_role(role_name)
     all_roles = Role.all
     r = nil
     all_roles.each do |role|
