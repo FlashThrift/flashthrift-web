@@ -60,11 +60,11 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to @item, :notice => 'Item was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @item.errors, :status => :unprocessable_entity }
       end
     end
   end
