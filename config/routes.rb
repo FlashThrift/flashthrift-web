@@ -1,12 +1,12 @@
 FlashthriftWeb::Application.routes.draw do
-  get "sign_up" => "users#new", :as => "sign_up"
+  get "log_in" => "sessions#new", :as => 'log_in'
+  get 'sign_up' => 'users#new', :as => 'sign_up'
   root :to => "admin#index"
 
   resources :users
-
   resources :roles
   resources :items
-
+  resources :sessions
 
   match 'admin' => 'admin#index'
 

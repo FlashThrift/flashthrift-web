@@ -39,8 +39,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Checks if a user belongs to a role
-  def self.check_role(role_name)
+  # Checks if this user belongs to a role
+  def check_role(role_name)
     all_roles = Role.all
     r = nil
     all_roles.each do |role|
