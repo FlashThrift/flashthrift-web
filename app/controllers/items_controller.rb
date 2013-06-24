@@ -41,6 +41,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(params[:item])
+    @item.user = current_user # If current_user == nil, then this won't validate (not logged in)
 
     respond_to do |format|
       if @item.save
@@ -72,7 +73,21 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    @item = Item.find(params[:id])
+    
+     @item = Item.find(params[:id])
+
+    # Determine if the user is admin, moderator, or the owner of the item
+    user = current_user
+    if (not user == @item.user) && (  (not user.check_role('admin')) ||  (not user.check_role('moderators')) )
+      respond_to do |format|
+        perm = user.check_role('moderators')
+        logger.debug("perm: ")
+        logger.debug(perm)
+        format.html { redirect_to @item, :notice => 'You do not have the permissions to delete this item.' }
+      end
+      return
+    end
+
     @item.destroy
 
     respond_to do |format|
