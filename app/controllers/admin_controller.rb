@@ -8,6 +8,11 @@ class AdminController < ApplicationController
   # Show the page with all the links to admin things.
   def index
 
+    # if the user isn't logged in, then redirect them to the login page
+    if current_user == nil
+      redirect_to log_in_url
+    end
+
   end
 
 end
