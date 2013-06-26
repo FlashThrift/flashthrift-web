@@ -40,7 +40,9 @@ gem 'jquery-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
 # The latest version of the money gem requires Ruby 1.9, which we may or may not have.
-# This is a fork of the version 5.0 tag.
 gem 'money', '5.0'
+
+# For image uploads
+gem 'paperclip', '~>2.0'
 
 gem 'money-rails'
