@@ -38,4 +38,9 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
+
+# The latest version of the money gem requires Ruby 1.9, which we may or may not have.
+# This is a fork of the version 5.0 tag.
+gem 'money', :git => 'git://github.com/FlashThrift/money.git'
+
 gem 'money-rails'
