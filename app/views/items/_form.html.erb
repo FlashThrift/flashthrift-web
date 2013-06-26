@@ -19,6 +19,10 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+  <div>
+    <%= f.label :price %><br />
+    <%= f.text_field :price, :value => humanized_money_with_symbol(@item.price) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -59,6 +59,8 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
 
+    # Add code here to check if the user is an owner, moderator, or admin
+
     respond_to do |format|
       if @item.update_attributes(params[:item])
         format.html { redirect_to @item, :notice => 'Item was successfully updated.' }
