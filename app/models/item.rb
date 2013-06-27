@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
   attr_accessible :description, :name, :price_cents, :price
   belongs_to :user
+  has_many :images
 
   # Use the money-rails module to make a price attribute
   monetize :price_cents
