@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new
+    @item.images.build
 
     respond_to do |format|
       format.html # new.html.erb

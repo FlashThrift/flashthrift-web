@@ -5,6 +5,8 @@
 # may want to allow the user to actually have more than one image.
 #
 class Image < ActiveRecord::Base
+  attr_accessible :image_upload
+
   belongs_to :item
   has_attached_file :image_upload
 end
