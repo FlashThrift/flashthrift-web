@@ -15,5 +15,9 @@
   <%= humanized_money_with_symbol(@item.price) %>
 </p>
 
+<p>
+  <b>Image</b><br />
+  <%= image_tag @item.images.first.image_upload.url %>
+</p>
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

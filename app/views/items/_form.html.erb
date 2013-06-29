@@ -23,11 +23,10 @@
     <%= f.label :price %><br />
     <%= f.text_field :price, :value => humanized_money_with_symbol(@item.price) %>
   </div>
-  <!-- Need to loop over all the @item.images -->
   <b>Images</b>
   <%= f.fields_for :images do |image_form| %>
-    <%= image_form.label :image %>
-    <%= image_form.file_field :image_upload %>
+    <%= image_form.file_field :image_upload %><br /><br />
+    <%= image_tag @item.images.first.image_upload.url %>
   <% end %>
 
 
