@@ -18,5 +18,3 @@ moderators.save
 sales = Role.new
 sales.name = 'sales'
 sales.save
-
-item_statuses = ItemStatus.create([{ :status => 'listed'}, { :status => 'sold' }, { :status => 'suspended'}])
