@@ -7,4 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 
-roles = Role.create([{ :name => 'admin' }, { :name => 'moderators' }, { :name => 'sales' }])
+admin = Role.new
+admin.name = 'admin'
+admin.save
+
+moderators = Role.new
+moderators.name = 'moderators'
+moderators.save
+
+sales = Role.new
+sales.name = 'sales'
+sales.save
+
+item_statuses = ItemStatus.create([{ :status => 'listed'}, { :status => 'sold' }, { :status => 'suspended'}])
