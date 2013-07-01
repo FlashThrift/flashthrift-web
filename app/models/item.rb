@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
   attr_accessible :description, :name, :price_cents, :price, :images, :images_attributes, :status
   belongs_to :user
   has_many :images
-  validatess :status, :inclusion => { :in => [ 'listed', 'sold', 'suspended' ]}
+  validates :status, :inclusion => { :in => [ 'listed', 'sold', 'suspended' ]}
   has_and_belongs_to_many :tags
   accepts_nested_attributes_for :images, :allow_destroy => true
 

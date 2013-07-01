@@ -11,8 +11,12 @@
 </p>
 
 <p>
-  <b>Price</b>
+  <b>Price:</b>
   <%= humanized_money_with_symbol(@item.price) %>
+</p>
+<p>
+  <b>Status:</b>
+  <%= @item.status.capitalize %>
 </p>
 
 <p>

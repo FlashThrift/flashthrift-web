@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
     all_roles = Role.all
     r = nil
     all_roles.each do |role|
-      if role.role_name == role_name
+      if role.name == role_name
         r = role
       end
     end
