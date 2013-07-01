@@ -18,9 +18,9 @@
       <td>Admin</td><td>Sales</td><td>Moderator</td>
     </tr>
     <tr>
-      <td><input type="checkbox" disabled="true" <% if @user.check_role('admin') then %> checked <% end %></td>
-      <td><input type="checkbox" disabled="true" <% if @user.check_role('sales') then %> checked <% end %></td>
-      <td><input type="checkbox" disabled="true" <% if @user.check_role('moderators') then %> checked <% end %>/></td>
+      <td><input type="checkbox" disabled <% if @user.check_role('admin') then %> checked <% end %>/></td>
+      <td><input type="checkbox" disabled <% if @user.check_role('sales') then %> checked <% end %> /></td>
+      <td><input type="checkbox" disabled <% if @user.check_role('moderators') then %> checked <% end %>/></td>
     </tr>
   </table>
 </p>
