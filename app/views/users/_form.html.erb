@@ -15,6 +15,11 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
+    <%= f.label :status %><br />
+    <%= f.select :active, options_for_select([["Active", true], ["Suspended", false]]) %>
+  </div>
+
+  <div class="field">
     <%= f.label :roles %>
     <table>
       <tr><td>Admin</td><td>Sales</td><td>Moderator</td></tr>
@@ -24,6 +29,13 @@
         <td><%= f.check_box :is_moderator?, {'disabled' => (!current_user.is_admin?) } %></td>
       </tr>
     </table>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %><br />
+    <%= f.label :confirm_password %><br />
+    <%= f.password_field :confirm_password %>
   </div>
 
   <div class="actions">

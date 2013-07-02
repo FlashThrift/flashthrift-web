@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701011626) do
+ActiveRecord::Schema.define(:version => 20130702031559) do
 
   create_table "images", :force => true do |t|
     t.string   "image_upload_file_name"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20130701011626) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "username",      :null => false
+    t.boolean  "active"
   end
 
 end
