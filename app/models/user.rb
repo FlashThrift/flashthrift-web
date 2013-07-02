@@ -39,6 +39,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is_admin?
+    self.check_role('admin')
+  end
+
+  def is_sales?
+    self.check_role('sales')
+  end
+
+  def is_moderator?
+    self.check_role('moderators')
+  end
+
   # Checks if this user belongs to a role
   def check_role(role_name)
     all_roles = Role.all
