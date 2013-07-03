@@ -16,7 +16,7 @@
   </div>
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.select :active, options_for_select([["Active", true], ["Suspended", false]]) %>
+    <%= f.select :active, options_for_select([["Active", true], ["Suspended", false]], @user.active) %>
   </div>
 
   <div class="field">
@@ -35,9 +35,9 @@
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password %><br />
+    <%= f.password_field :password, :value => '' %><br />
     <%= f.label :confirm_password %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, :value => '' %>
   </div>
 
   <div class="actions">
