@@ -24,9 +24,11 @@
     <table>
       <tr><td>Admin</td><td>Sales</td><td>Moderator</td></tr>
       <tr>
+          <!--
         <td><%= f.check_box :is_admin?, {'disabled' => (!current_user.is_admin?) } %></td>
         <td><%= f.check_box :is_sales?, {'disabled' => (!current_user.is_admin?) }%></td>
         <td><%= f.check_box :is_moderator?, {'disabled' => (!current_user.is_admin?) } %></td>
+        -->
       </tr>
     </table>
   </div>
@@ -35,7 +37,7 @@
     <%= f.label :password %><br />
     <%= f.password_field :password %><br />
     <%= f.label :confirm_password %><br />
-    <%= f.password_field :confirm_password %>
+    <%= f.password_field :password_confirmation %>
   </div>
 
   <div class="actions">
