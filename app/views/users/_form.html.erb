@@ -1,3 +1,24 @@
+<script type="text/javascript">
+  // Toggles the new password input on and off
+  function toggle_password_update() {
+    var checkbox = document.getElementById('update_password_checkbox');
+    var new_password_input = document.getElementById('user_password');
+    var new_password_confirmation_input = document.getElementById('user_password_confirmation');
+
+    if (checkbox.checked) {
+      new_password_input.disabled = false;
+      new_password_confirmation_input.disabled  = false;
+    }
+    else {
+      new_password_input.disabled = true;
+      new_password_confirmation_input.disabled = true;
+      new_password_input.value = '';
+      new_password_confirmation_input.value = '';
+    }
+  }
+</script>
+
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -34,10 +55,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, :value => '' %><br />
-    <%= f.label :confirm_password %><br />
-    <%= f.password_field :password_confirmation, :value => '' %>
+    <%= f.label :update_password %>
+    <input type="checkbox" id="update_password_checkbox" onclick="toggle_password_update()"/><br />
+    <%= f.label :new_password %><br />
+    <%= f.password_field :password, {:value => '', :disabled => 'true' } %><br />
+    <%= f.label :confirm_new_password %><br />
+    <%= f.password_field :password_confirmation, { :value => '', :disabled => 'true' } %>
   </div>
 
   <div class="actions">
