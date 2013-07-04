@@ -10,7 +10,14 @@
   <b>Email:</b>
   <a href="mailto:<%= @user.email %>"><%= @user.email %></a>
 </p>
-
+<p>
+  <b>Status:</b>
+  <% if @user.active %>
+    Active
+  <% else %>
+    Suspended
+  <% end %>
+</p>
 <p>
   <b>Roles</b>
   <table>
