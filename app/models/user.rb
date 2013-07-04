@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   
   attr_accessor :password
-  attr_accessible :username, :email, :password, :password_confirmation, :active
+  attr_accessible :username, :email, :password, :password_confirmation, :active, :is_admin, :is_sales, :is_moderator
 
   before_save :encrypt_password
   
@@ -37,6 +37,40 @@ class User < ActiveRecord::Base
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
+  end
+
+  public 
+
+  # Sets or unsets a role
+  def set_role(role_name, value)
+    if value == "1"
+      for role in self.roles
+        if role.name == role_name
+          return
+        end
+      end
+      r = Role.find(:first, :conditions => ['name =?', role_name])
+      self.roles.push(r)
+    else
+      for role in self.roles
+        if role.name == role_name
+          self.roles.delete(role)
+          return
+        end
+      end
+    end
+  end
+
+  def is_admin=(value)
+    set_role('admin', value)
+  end
+
+  def is_sales=(value)
+    set_role('sales', value)
+  end
+
+  def is_moderator=(value)
+    set_role('moderators', value)
   end
 
   def is_admin?
