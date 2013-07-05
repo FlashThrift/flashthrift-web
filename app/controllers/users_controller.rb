@@ -1,5 +1,17 @@
 class UsersController < ApplicationController
   
+  before_filter :check_role_update, :only => [:update, :create]
+
+  # Only admin users should be able to make changes certain aspects of a User
+  def check_role_update
+    unless current_user.is_admin?
+      params[:user][:is_admin] = "0"
+      params[:user][:is_moderator] = "0"
+      params[:user][:is_sales] = "0"
+    end
+  end
+
+
   # Show form to make a new user
   def new
     @user = User.new

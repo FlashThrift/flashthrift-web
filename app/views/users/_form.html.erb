@@ -45,15 +45,9 @@
     <table>
       <tr><td>Admin</td><td>Sales</td><td>Moderator</td></tr>
       <tr>
-          
         <td><%= f.check_box :is_admin?, {'disabled' => (!current_user.is_admin?) } %></td>
         <td><%= f.check_box :is_sales?, {'disabled' => (!current_user.is_admin?) }%></td>
         <td><%= f.check_box :is_moderator?, {'disabled' => (!current_user.is_admin?) } %></td>
-        <!--
-        <td><%= check_box_tag 'admin', 'admin', @user.is_admin?, { :disabled => !current_user.is_admin? } %></td>
-        <td><%= check_box_tag 'sales', 'sales', @user.is_sales?, { :disabled => !current_user.is_admin? } %></td>
-        <td><%= check_box_tag 'moderator', 'moderators', @user.is_moderator?, { :disabled => !current_user.is_admin? } %></td>
-        -->
       </tr>
     </table>
   </div>
