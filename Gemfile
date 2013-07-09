@@ -46,3 +46,4 @@ gem 'money', '5.0'
 gem 'paperclip', '~>2.0'
 
 gem 'money-rails'
+gem 'annotate'

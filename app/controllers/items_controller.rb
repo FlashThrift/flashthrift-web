@@ -1,20 +1,21 @@
 class ItemsController < ApplicationController
+  before_filter :find_item, :only => [:show, :edit, :update, :destroy]
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @item = Item.offset(rand(Item.count)).first
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @items }
-    end
+#    @items = Item.all
+
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.json { render :json => @items }
+#    end
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = Item.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @item }
@@ -35,7 +36,6 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = Item.find(params[:id])
   end
 
   # POST /items
@@ -58,8 +58,6 @@ class ItemsController < ApplicationController
   # PUT /items/1
   # PUT /items/1.json
   def update
-    @item = Item.find(params[:id])
-
     # Add code here to check if the user is an owner, moderator, or admin
 
     respond_to do |format|
@@ -76,9 +74,6 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    
-     @item = Item.find(params[:id])
-
     # Determine if the user is admin, moderator, or the owner of the item
     user = current_user
     if (not user == @item.user) && (  (not user.check_role('admin')) ||  (not user.check_role('moderators')) )
@@ -97,5 +92,11 @@ class ItemsController < ApplicationController
       format.html { redirect_to items_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+  
+  def find_item
+    @item ||= Item.find(params[:id])
   end
 end

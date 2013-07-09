@@ -1,31 +1,63 @@
-<h1>Listing items</h1>
+<div class="billboard">
+    <div class="span10">
+        <div class="row item">
+			<h3 class="item-title"><%= @item.name %></h3>
+            <div class="span7">
+				<div class="spotlight">
+					<img src="missing_image.png" class="img-rounded item-image" />
+					<div class="price-tag item-price"><%= humanized_money_with_symbol(@item.price) %></div>
+				</div>
+			</div>
+            <div class="span3">
+				<div class="details">
+					<div class="countdown text-center">
+						You have <br />
+						<em>60</em> <br />
+						seconds left!
+					</div>
+                    <div class="cta text-center">
+						<div class="btn-toolbar">
+							<div class="btn-group">
+								<a class="btn btn-large btn-success takeIt" href="/item_sold/<%= @item.id %>">TAKE IT!</a>
+								<a class="btn btn-large btn-danger leaveIt" href="/">Leave It</a>
+							</div>
+						</div>
+					</div>
+					<p class="lead text-center item-description"><%= @item.description %></p>
+					<p class="lead text-center"><h5>Prices include estimated shipping.</h5></p>
+          <input type='hidden' name='id' class='item-id' value='<%= @item.id %>'>
+				</div>
+            </div>
+        </div>
+    </div>
+	<div class="spinner"></div>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Status</th>
-    <th>Seller</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div id="category-group" class="market-this container-narrow" style="margin-left:25%; width:480px;">
+    <table border="0">
+    <tr>  
+        <td style="padding: 10px; width:150px;"><i class="icon-time"></i> <button class="btn btn-small btn-link">Antiques</button></td>
+        <td style="padding: 10px; width:150px;"><i class="icon-heart"></i> <button class="btn btn-small btn-link">Collectables</button></td>
+        <td style="padding: 10px; width:150px;"><i class="icon-music"></i> <button class="btn btn-small btn-link">Media</button></td>
+    </tr>
+    <tr>
+        <td style="padding: 10px; width:150px;"><i class="icon-book"></i> <button class="btn btn-small btn-link">Books</button></td>
+        <td style="padding: 10px; width:150px;"><i class="icon-camera"></i> <button class="btn btn-small btn-link">Electronics</button</td>
+        <td style="padding: 10px; width:150px;"><i class="icon-gift"></i> <button class="btn btn-small btn-link">Toys</button></td>
+    </tr>
+    <tr>
+        <td style="padding: 10px; width:150px;"><i class="icon-user"></i> <button class="btn btn-small btn-link">Clothes</button></td>
+        <td style="padding: 10px; width:150px;"><i class="icon-home"></i> <button class="btn btn-small btn-link">Household Items</button></td>
+        <td style="padding: 10px; width:150px;"><i class="icon-glass"></i> <button class="btn btn-small btn-link">Unique</button</td>
+    </tr>
+    </table>
+</div>
 
-<% @items.each do |item| %>
-  <tr>
-    <td><%= item.name %></td>
-    <td><%= item.description %></td>
-    <td><%= humanized_money_with_symbol(item.price) %></td>
-    <td><%= item.status %></td>
-    <td><%= link_to item.user.username, user_path(item.user) %></td>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Item', new_item_path %>
+<div class="market-this container-narrow">
+	<div class="jumbotron">
+		<h1>One picture. <br />One sentence. <br />One chance!</h1>
+		<p class="lead">Ever wanted to get rid of your junk quickly without the hassle of eBay or Craigslist? We're taking on the big boys and making your life easier.</p>
+		<a class="btn btn-large btn-success" href="/sell">Sell your stuff now!</a>
+	</div>
+</div>

@@ -1,0 +1,174 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+body {
+  padding: 0 10px 10px;
+  padding-bottom: 60px;
+}
+/* Custom container */
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+.header {
+  background-color: #333;
+  padding: 15px 20px;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -ms-border-radius: 0 0 5px 5px;
+  -o-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+}
+.header .sell-stuff {
+  margin-top: 4px;
+}
+.content {
+  overflow: hidden;
+  min-height: 360px;
+}
+/* Main marketing message and sign up button */
+.billboard {
+  margin: 10px 0;
+  overflow: hidden;
+  position: relative;
+}
+.billboard h1 {
+  font-size: 100px;
+  line-height: 1;
+}
+.billboard .spotlight {
+  position: relative;
+  display: block;
+  margin-left: -30px;
+}
+.billboard .spotlight img {
+  width: 100%;
+}
+.billboard .spotlight .price-tag {
+  background-color: #FDC15F;
+  padding: 0 15px;
+  font-size: 84px;
+  line-height: 84px;
+  position: absolute;
+  top: 40%;
+  right: -15px;
+  -webkit-transform: rotate(7deg);
+  -moz-transform: rotate(7deg);
+  -o-transform: rotate(7deg);
+  -ms-transform: rotate(7deg);
+  transform: rotate(7deg);
+}
+.billboard .details .countdown {
+  background-color: #e7e7e7;
+  padding: 20px;
+  margin-bottom: 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.billboard .details .countdown em {
+  font-size: 70px;
+  line-height: 90%;
+  padding: 0 10px;
+  font-style: normal;
+  font-weight: strong;
+}
+.billboard .spinner {
+  background: url(../img/spinner.gif) no-repeat center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+/* Custom container */
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+  margin: 60px 0;
+  text-align: center;
+}
+.jumbotron h1 {
+  font-size: 72px;
+  line-height: 1;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+/* Supporting marketing content */
+.marketing {
+  margin: 60px 0;
+}
+.marketing .p + h4 {
+  margin-top: 28px;
+}
+.cta {
+  display: block;
+  text-align: center;
+}
+.cta button {
+  display: block;
+}
+/*// Facebook Login Challenge //*/
+.facebook-challenge {
+  margin-top: 20px;
+}
+.facebook-challenge .login-blurb {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin-top: 5%;
+  padding: 40px 30px;
+  border: 1px solid #999;
+}
+.build-item label {
+  font-size: 19.599999999999998px;
+}
+/*// Build Item for Sale //*/
+.sell-form-container {
+  margin-top: 20px;
+}
+#authMessage,
+#flashMessage {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #999;
+}
+.footer {
+  padding: 10px 20px;
+}
+@media only screen and (max-width: 580px) {
+  .sell-stuff {
+    display: none;
+  }
+}
+/* UTILITIES */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+
+  -webkit-appearance: none;
+  margin: 0;
+  /* <-- Apparently some margin are still there even though it's hidden */
+
+}

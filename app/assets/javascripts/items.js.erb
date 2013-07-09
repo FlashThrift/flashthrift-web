@@ -1,0 +1,81 @@
+// Place all the behaviors and hooks related to the matching controller here.
+// All this logic will automatically be available in application.js.
+
+$(document).ready(function(){
+	var countdown;
+	bindCountdown();
+
+	function expireTime(){
+		return '+60s';
+	}
+
+	function bindCountdown(){
+		countdown = $('.item').find('.countdown em').countdown({until:expireTime(), format: 'S', compact:true, onExpiry: countdownExpired});
+	}
+
+	function countdownExpired(){
+		showNextItem();
+	}
+
+	function showNextItem(){
+		window.location.href = "/";
+		return;
+		var itemContainer = $('.item');
+
+		itemContainer.animate({opacity: 0}, 100);
+		var currentId = {'id': itemContainer.find('.item-id').val()};
+		$.ajax({
+			url: "/items/request",
+			type: "POST",
+			data: currentId,
+			dataType: 'json'
+		})
+			.done( function(json_data) {
+				var itemContainer = $('.item');
+				var image, imgFailCheck;
+				if(json_data['image_path'] != ""){
+					image = json_data['image_path'];
+				} else {
+					image = json_data['id'];
+				}
+				itemContainer.find('.item-id').val(json_data['id']);
+				itemContainer.find('.item-title').text(json_data['title']);
+				itemContainer.find('.item-image').attr('src', '/uploads/items/' + image);
+				itemContainer.find('.item-price').text('$' + json_data['price']);
+				itemContainer.find('.item-description').text(json_data['description']);
+				itemContainer.find('.takeIt').attr('href', '/item_sold/' + json_data['id']);
+				countdown.countdown('destroy');
+				imgFailCheck = setTimeout(showNextItem, 2000);
+				itemContainer.find('.item-image')
+					.one(
+					{
+						'load': function() {
+							$('.item').animate({opacity: 1}, 100);
+							bindCountdown();
+							clearTimeout(imgFailCheck);
+						}
+					}).each(function() {
+						if(this.complete) $(this).load();
+					});
+			})
+			.fail( function(raw_output) {
+				console.log(raw_output);
+			});
+	}
+
+//  $('.takeIt').on('click',function(e){
+//    alert("Really interested? Email flashthrift@gmail.com and we'll hook you up! (Provided no one else claims it first)");
+////    e.preventDefault();
+////    showNextItem();
+//
+//  });
+
+	$('.leaveIt').on('click',function(e){
+		e.preventDefault();
+		showNextItem();
+	});
+
+	$('.alert-manual-payment').on('click', function(e){
+    alert("Thanks! We're still working on setting up automatic payments and notification, so please email us at flashthrift@gmail.com and we'll manually set you up with the item!");
+	});
+}) //End of (document).ready function
