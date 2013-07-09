@@ -1,7 +1,12 @@
 class AddItems < ActiveRecord::Migration
-  def up
-  end
+  def change
+    create_table :items do |t|
+      t.string   "name"
+      t.string   "description"
+      t.integer  "price"
+      t.string   "status"
 
-  def down
+      t.timestamps
+    end
   end
 end
