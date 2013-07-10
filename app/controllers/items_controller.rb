@@ -1,16 +1,10 @@
 class ItemsController < ApplicationController
   before_filter :find_item, :only => [:show, :edit, :update, :destroy]
+
   # GET /items
   # GET /items.json
   def index
     @item = Item.offset(rand(Item.count)).first
-
-#    @items = Item.all
-
-#    respond_to do |format|
-#      format.html # index.html.erb
-#      format.json { render :json => @items }
-#    end
   end
 
   # GET /items/1
