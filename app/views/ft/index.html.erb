@@ -1,0 +1,27 @@
+<div class="span10">
+  <div class="row item">
+    <h3 class="item-title"><%= @item.name %></h3>
+    <div class="span7">
+      <div class="spotlight">
+        <img src="asdf" class="img-rounded item-image" />
+        <div class="price-tag item-price"><%= humanized_money_with_symbol @item.price %></div>
+      </div>
+    </div>
+    <div class="span3">
+      <div class="details">
+        <div class="countdown text-center">
+          You have <br />
+          <em>20</em><br />
+          seconds left!
+        </div>
+        <div class="cta text-center">
+          <div class="btn-toolbar">
+            <div class="btn-group">
+              <a class="btn btn-large btn-success takeIt" href="#">TAKE IT!</a>
+              <a class="btn btn-large btn-danger leaveIt" href="#">Leave It</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

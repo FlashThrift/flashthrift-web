@@ -1,11 +1,8 @@
-<!DOCTYPE html>
 <html>
   <head>
-      <title>FlashThrift</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashThrift</title>
     <%= stylesheet_link_tag "bootstrap.min.css" %>
     <%= stylesheet_link_tag "main.css" %>
-    <%= stylesheet_link_tag "bootstrap-responsive.min.css" %>
   </head>
   <body>
     <div class="container">
@@ -15,10 +12,12 @@
           <a class="btn sell-stuff" href="/sell">Sell Your Stuff</a>
           <a class="btn sell-stuff" href="/about">About FlashThrift</a>
         </div>
-    </div>
-    <div class="content">
+      </div>
+    
+      <div class="billboard">
         <%= yield %>
-    </div>
+      </div>
+
     </div>
   </body>
 </html>
