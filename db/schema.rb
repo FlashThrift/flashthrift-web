@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704145933) do
+ActiveRecord::Schema.define(:version => 20130712000328) do
 
   create_table "images", :force => true do |t|
     t.string   "image_upload_file_name"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(:version => 20130704145933) do
     t.integer  "price_cents"
     t.string   "status"
   end
+
+  create_table "items_tags", :id => false, :force => true do |t|
+    t.integer "item_id"
+    t.integer "tag_id"
+  end
+
+  add_index "items_tags", ["item_id", "tag_id"], :name => "index_items_tags_on_item_id_and_tag_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name",       :null => false
