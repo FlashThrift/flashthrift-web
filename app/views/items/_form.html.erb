@@ -1,3 +1,16 @@
+<script type="text/javascript">
+  function add_tag(tag_name) {
+    var input = document.getElementById('tag_input');
+    var output = document.getElementById('tag_list');
+    if (output.innerHTML !== '')
+      output.innerHTML = output.innerHTML + ', ';
+    output.innerHTML = output.innerHTML  + input.value.trim();
+    input.value = '';
+  }
+</script>
+
+
+
 <%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
@@ -23,16 +36,33 @@
     <%= f.label :price %><br />
     <%= f.text_field :price, :value => humanized_money_with_symbol(@item.price) %>
   </div>
+
   <div>
     <%= f.label :status %><br />
     <%= f.select :status, options_for_select([ ['Listed', 'listed'], ['Sold', 'sold'], ['Suspended', 'suspended']], @item.status) %>
   </div>
 
-  <b>Images</b>
+  <b>Image</b>
   <%= f.fields_for :images do |image_form| %>
     <%= image_form.file_field :image_upload %><br /><br />
     <%= image_tag @item.images.first.image_upload.url %>
   <% end %>
+  <br />
+
+
+  <%
+      tag_str = ''
+      @item.tags.each do |tag| 
+          tag_str = tag_str + tag.name + ','
+      end
+  %>
+  <div>
+    <%= f.label :tags %>
+    <%= hidden_field_tag :tags, tag_str %>
+    <div id="tag_list"></div>
+    <input type="text" id="tag_input" value="" />
+    <input type="button" value="Add Tag" onclick="add_tag()" />
+  </div>
 
 
   
