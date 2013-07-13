@@ -18,3 +18,10 @@ moderators.save
 sales = Role.new
 sales.name = 'sales'
 sales.save
+
+tags = ['antiques', 'collectables', 'media', 'books', 'electronics', 'toys', 'clothes', 'household', 'unique']
+tags.each do |tag_name|
+  tag = Tag.new
+  tag.name = tag_name
+  tag.save
+end
