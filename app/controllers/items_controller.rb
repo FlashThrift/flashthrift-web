@@ -7,6 +7,11 @@ class ItemsController < ApplicationController
     @item = Item.offset(rand(Item.count)).first
   end
 
+  # POST  /items/1/buy
+  def buy
+  end
+
+
   # GET /items/1
   # GET /items/1.json
   def show
