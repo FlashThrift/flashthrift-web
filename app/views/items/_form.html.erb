@@ -1,4 +1,6 @@
 <script type="text/javascript">
+    
+  var current_tags = [ <%= @item.tags.map { |tag| '\'' + tag.name + '\''}.join(',').html_safe %> ];
   function add_tag(tag_name) {
     var input = document.getElementById('tag_input');
     var output = document.getElementById('tag_list');
