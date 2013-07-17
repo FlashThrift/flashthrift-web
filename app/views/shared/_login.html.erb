@@ -1,0 +1,11 @@
+
+<% if session[:user_id] != nil %>
+  <a class="btn" href='/users/<%= session[:user_id] %>'>View My Profile</a>
+  <a class="btn" href="#">Sell Your Stuff</a>
+  <a class="btn" href="/log_out">Logout</a>
+<% else %>
+  <a class="btn" href="/log_in">Login</a>
+  <a class="btn" href="#">Sign up</a>
+
+<% end %>
+<a class="btn" href="#">About FlashThrift</a>

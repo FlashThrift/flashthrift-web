@@ -12,10 +12,9 @@
       <div class="header">
         <a href="/"><%= image_tag "flashthrift-logo-hdr.png" %></a>
         <div class="btn-group pull-right">
-            <!-- Add case here to check if the user is logged in -->
-            <a class="btn" href="/log_in">Login</a>
-            <a class="btn" href="#">Sign up</a>
-            <a class="btn" href="#">About FlashThrift</a>
+            <%= render "shared/login" %>
+
+
       </div>
     </div>
     <div class="content">
