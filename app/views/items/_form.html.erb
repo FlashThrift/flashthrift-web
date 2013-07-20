@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
     
   var current_tags = [ <%= @item.tags.map { |tag| '\'' + tag.name + '\''}.join(',').html_safe %> ];
@@ -11,9 +12,7 @@
   }
 </script>
 
-
-
-<%= form_for(@item) do |f| %>
+<%= form_for(@item,  html: {:class => 'form-horizontal' }) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -26,49 +25,62 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div>
-    <%= f.label :price %><br />
-    <%= f.text_field :price, :value => humanized_money_with_symbol(@item.price) %>
-  </div>
+  <div class="control-group">
+      <%= f.label :name, { :class => 'control-label' } %>
+      <div class="controls">
+          <%= f.text_field :name %>
+      </div>
+</div>
 
-  <div>
-    <%= f.label :status %><br />
-    <%= f.select :status, options_for_select([ ['Listed', 'listed'], ['Sold', 'sold'], ['Suspended', 'suspended']], @item.status) %>
-  </div>
+<div class="control-group">
+    <%= f.label :description, {:class => 'control-label'} %>
+    <div class="controls">
+        <%= f.text_area :description, :rows => 5 %>
+    </div>
+</div>
 
-  <b>Image</b>
-  <%= f.fields_for :images do |image_form| %>
-    <%= image_form.file_field :image_upload %><br /><br />
-    <%= image_tag @item.images.first.image_upload.url %>
-  <% end %>
-  <br />
+<div class="control-group">
+    <%= f.label :price, {:class => 'control-label'} %>
+    <div class="controls">
+        <%= f.text_field :price, :value => humanized_money_with_symbol(@item.price) %>
+    </div>
+</div>
 
+<div class="control-group">
+    <%= f.label :status, {:class => 'control-label'} %>
+    <div class="controls">
+        <%= f.select :status, options_for_select([ ['Listed', 'listed'], ['Sold', 'sold'], ['Suspended', 'suspended']], @item.status) %>
+    </div>
+</div>
 
-  <%
-      tag_str = ''
-      @item.tags.each do |tag| 
-          tag_str = tag_str + tag.name + ','
-      end
-  %>
-  <div>
+<div class="control-group">
+    <%= f.label :image, {:class => 'control-label'} %>
+    <div class="controls">
+    <%= f.fields_for :images do |image_form| %>
+        <%= image_form.file_field :image_upload %><br />
+        <%= image_tag @item.images.first.image_upload.url %>
+    <% end %>
+    </div>
+</div>
+
+<!--
+<%
+    tag_str = ''
+    @item.tags.each do |tag| 
+        tag_str = tag_str + tag.name + ','
+    end
+%>
+<div>
     <%= f.label :tags %>
     <%= hidden_field_tag :tags, tag_str %>
     <div id="tag_list"></div>
     <input type="text" id="tag_input" value="" />
     <input type="button" value="Add Tag" onclick="add_tag()" />
-  </div>
+</div>
+-->
 
 
-  
-  <div class="actions">
+<div class="actions">
     <%= f.submit %>
-  </div>
+</div>
 <% end %>
